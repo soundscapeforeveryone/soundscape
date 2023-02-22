@@ -1,3 +1,64 @@
+.items * {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  width: 50%;
+  height: 50vh;
+  vertical-align: top;
+}
+
+.items > * > div {
+  position: absolute;
+  left: calc(50% - 64px);
+  top: calc(50% - 64px);
+  width: 128px;
+  height: 128px;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.square{
+  background-color: green;
+}
+
+#squareIcon{
+  background-color: blue;
+  box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.circle{
+  background-color: pink;
+}
+
+#circleIcon{
+  background-color: purple;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
+}
+
+.triangle{
+  background-color: purple;
+}
+
+#triangleIcon{
+  box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  width: 0;
+  height: 0;
+  border: 64px solid transparent;
+  border-top: 0;
+  border-bottom: 128px solid pink;
+}
+
+.diamond{
+  background-color: blue;
+}
+
+#diamondIcon{
+  background-image: linear-gradient(135deg, green 35%, black 100% );
+  transform: rotate(45deg);
+}
+
+/* ======== init app style ======== */
 .main {
   display: flex;
   flex-direction: column;
