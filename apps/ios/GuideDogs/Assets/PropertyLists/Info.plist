@@ -57,19 +57,19 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>AppName uses Bluetooth LE to connect to accessories.</string>
+	<string>Soundscape uses Bluetooth LE to connect to accessories.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>AppName uses Bluetooth LE to connect to accessories.</string>
+	<string>Soundscape uses Bluetooth LE to connect to accessories.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>AppName uses your location to provide you with relevant information about your surroundings.</string>
+	<string>Soundscape uses your location to provide you with relevant information about your surroundings.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>AppName uses your location to provide you with relevant information about your surroundings.</string>
+	<string>Soundscape uses your location to provide you with relevant information about your surroundings.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>AppName uses your location to provide you with relevant information about your surroundings.</string>
+	<string>Soundscape uses your location to provide you with relevant information about your surroundings.</string>
 	<key>NSMotionUsageDescription</key>
-	<string>AppName uses motion detection to personalize automatic callouts.</string>
+	<string>Soundscape uses motion detection to personalize automatic callouts.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>AppName uses the photo library for attaching photos to feedback.</string>
+	<string>Soundscape uses the photo library for attaching photos to feedback.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER).activity.my-location</string>
