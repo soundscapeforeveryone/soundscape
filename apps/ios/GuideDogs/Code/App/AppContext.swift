@@ -42,7 +42,7 @@ class AppContext {
     static let appDisplayName = "Soundscape"
     static let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     static let appBuild = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
-    static let appStoreId = "1240320677"
+    static let appStoreId = "6449701760"
 
     static var appState: UIApplication.State = .inactive
     static let appLaunchedInBackground: Bool = UIApplication.shared.applicationState == .background
@@ -376,16 +376,16 @@ extension AppContext {
     
     struct Links {
         static func privacyPolicyURL(for locale: Locale) -> URL {
-            return URL(string: "INSERT PRIVACY POLICY URL HERE")!
+            return URL(string: "https://ialabs.ie/privacy-policy")!
         }
         
         static func servicesAgreementURL(for locale: Locale) -> URL {
-            return URL(string: "INSERT SERVICES AGREEMENT URL HERE")!
+            return URL(string: "https://ialabs.ie/privacy-policy")!
         }
     
-        static let companySupportURL = URL(string: "INSERT SUPPORT URL HERE")!
+        static let companySupportURL = URL(string: "https://ialabs.ie/")!
         
-        static let accessibilityFrance = URL(string: "INSERT ACCESSIBILITY STATEMENT URL HERE")!
+        static let accessibilityFrance = URL(string: "https://ialabs.ie/")!
     }
     
 }

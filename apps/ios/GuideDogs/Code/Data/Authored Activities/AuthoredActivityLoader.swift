@@ -505,7 +505,7 @@ class AuthoredActivityLoader {
             
             for (wptIndex, waypoint) in content.waypoints.enumerated() {
                 for (clipIndex, image) in waypoint.images.enumerated() {
-                    guard let key = manager.cacheKey(for: image.url), let imageCached = await manager.imageCache.containsImage?(forKey: key, cacheType: .all), imageCached == .none  else {
+                    guard let key = manager.cacheKey(for: image.url), await manager.imageCache.containsImage!(forKey: key, cacheType: .all) == .none  else {
                         GDLogInfo(.authoredContent, "Image \(image.url.lastPathComponent) already cached (waypoint: \(wptIndex), clip: \(clipIndex))")
                         continue
                     }
