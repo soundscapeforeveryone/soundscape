@@ -18,8 +18,27 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    #increment_build_number(xcodeproj: "GuideDogs.xcodeproj")
-    build_app(workspace: "GuideDogs.xcworkspace", scheme: "Soundscape")
-    upload_to_testflight
+    increment_build_number(xcodeproj: "GuideDogs.xcodeproj")
+    gym(
+      verbose: true,
+      workspace: "GuideDogs.xcworkspace",
+      scheme: "Soundscape",
+      clean: true,
+      configuration: "Release",
+      output_name: "Soundscape",
+      export_xcargs: "-allowProvisioningUpdates",
+      skip_profile_detection: true,
+      export_options: {
+        method: "app-store",
+        signingStyle: "manual",
+        provisioningProfiles: {
+          "services.soundscape": "match AppStore services.soundscape"
+        }
+      }
+    )
+    upload_to_testflight(
+      username: "benjamint@okeenea.com",
+      app_identifier: "services.soundscape",
+    )
   end
 end
