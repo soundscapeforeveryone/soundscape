@@ -44,7 +44,7 @@ class DynamicLaunchViewController: UIViewController {
         }
         
         if !testEnvironment, !UIDeviceManager.isSimulator {
-            AppCenter.start(withAppSecret: "<#Secret#>", services: [Analytics.self, Crashes.self])
+            AppCenter.start(withAppSecret: "Secret", services: [Analytics.self, Crashes.self])
             Analytics.enabled = !SettingsContext.shared.telemetryOptout
             Crashes.enabled = !SettingsContext.shared.telemetryOptout
         }

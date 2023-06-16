@@ -66,12 +66,12 @@ class MenuViewController: UIViewController {
     
     override func loadView() {
         // Build views for menu items
-        menuView.addMenuItem(.recreation)
+        //menuView.addMenuItem(.recreation)
         menuView.addMenuItem(.devices)
         menuView.addMenuItem(.settings)
         menuView.addMenuItem(.help)
-        menuView.addMenuItem(.learningResources)
-        menuView.addMenuItem(.feedback)
+        //menuView.addMenuItem(.learningResources)
+//        menuView.addMenuItem(.feedback)
         menuView.addMenuItem(.rate)
         menuView.addMenuItem(.share)
         
