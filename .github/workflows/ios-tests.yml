@@ -1,0 +1,15 @@
+name: ios-tests
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+jobs:
+    unit-tests-iphone-13-ios-14-1:
+        runs-on: macos-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Test
+              run: xcodebuild test -workspace apps/ios/GuideDogs.xcworkspace -scheme Soundscape -testPlan UnitTests -destination 'platform=iOS Simulator,name=iPhone 13,OS=14.1'
