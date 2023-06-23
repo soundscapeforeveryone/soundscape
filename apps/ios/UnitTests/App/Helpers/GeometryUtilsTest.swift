@@ -8,6 +8,7 @@
 
 import XCTest
 import CoreLocation
+@testable import Soundscape
 
 class GeometryUtilsTest: XCTestCase {
 
@@ -22,7 +23,7 @@ class GeometryUtilsTest: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssert(GeometryUtils.geometryContainsLocation(location: CLLocationCoordinate2D.init(latitude: 1, longitude: 1), coordinates: [CLLocationCoordinate2D.init(latitude: 1, longitude: 1), CLLocationCoordinate2D.init(latitude: 3, longitude: 3)]))
+        XCTAssert(Soundscape.GeometryUtils.geometryContainsLocation(location: CLLocationCoordinate2D.init(latitude: 1, longitude: 1), coordinates: [CLLocationCoordinate2D.init(latitude: 1, longitude: 1), CLLocationCoordinate2D.init(latitude: 3, longitude: 3)]))
     }
 
     func testPerformanceExample() throws {
