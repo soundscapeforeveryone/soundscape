@@ -14,5 +14,7 @@ jobs:
             - run: cd apps/ios && bundle install && gem uninstall cocoapods --version '>= 1.12.0'
               # cocoapods-patch does not support cocoapods 1.12.0 yet
             - run: cd apps/ios && pod install
+            - name: Build
+              run: xcodebuild build-for-testing -workspace apps/ios/GuideDogs.xcworkspace -scheme Soundscape -destination 'platform=iOS Simulator,name=iPhone 13'
             - name: Test
-              run: xcodebuild test -workspace apps/ios/GuideDogs.xcworkspace -scheme Soundscape -testPlan UnitTests -destination 'platform=iOS Simulator,name=iPhone 13'
+              run: xcodebuild test-without-building -workspace apps/ios/GuideDogs.xcworkspace -scheme Soundscape -destination 'platform=iOS Simulator,name=iPhone 13'
