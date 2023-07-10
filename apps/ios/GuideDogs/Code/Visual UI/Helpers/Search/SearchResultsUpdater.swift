@@ -172,6 +172,9 @@ extension SearchResultsUpdater: UISearchBarDelegate {
     
     func fetchPOIS(by searchText: String, latitudinalMeters: CLLocationDistance, longitudinalMeters: CLLocationDistance, completion: @escaping ([POI]?)  -> Void) {
         var pois: [POI]? = []
+        let request = MKLocalSearch.Request()
+        
+        request.naturalLanguageQuery = searchText
         
         guard let location = AppContext.shared.geolocationManager.location else {
             completion([])
@@ -180,8 +183,8 @@ extension SearchResultsUpdater: UISearchBarDelegate {
         
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, latitudinalMeters: latitudinalMeters, longitudinalMeters: longitudinalMeters)
-        let request = MKLocalPointsOfInterestRequest(coordinateRegion: region)
         
+        request.region = region
         let search = MKLocalSearch(request: request)
         search.start { response, _ in
             guard let response = response else {
@@ -189,14 +192,11 @@ extension SearchResultsUpdater: UISearchBarDelegate {
                 return
             }
             for item in response.mapItems {
-                if let lat = item.placemark.location?.coordinate.latitude,
-                   let long = item.placemark.location?.coordinate.longitude,
-                   let name = item.name {
-                    let poi = GenericLocation(lat: lat, lon: long, name:name)
-                    pois?.append(poi)
-                }
+                let poi = GenericLocation(lat: (item.placemark.location?.coordinate.latitude)!, lon: (item.placemark.location?.coordinate.longitude)!, name: item.name!)
+                pois?.append(poi)
+                
             }
-            completion(pois)
+            completion(pois ?? [])
         }
     }
 }
