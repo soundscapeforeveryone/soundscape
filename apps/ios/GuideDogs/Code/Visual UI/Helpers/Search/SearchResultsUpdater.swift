@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 protocol SearchResultsUpdaterDelegate: AnyObject {
     func searchResultsDidStartUpdating()
@@ -120,6 +121,10 @@ extension SearchResultsUpdater: UISearchResultsUpdating {
         //
         // Fetch autosuggest results with new search text
         //
+        
+        fetchPOIS(by: searchText, latitudinalMeters: 500, longitudinalMeters: 500) { pois in
+            self.delegate?.searchResultsDidUpdate(pois ?? [] , searchLocation: nil)
+        }
     }
     
 }
@@ -159,6 +164,39 @@ extension SearchResultsUpdater: UISearchBarDelegate {
         //
         // Fetch search results given search text
         //
+        
+        fetchPOIS(by: searchText, latitudinalMeters: 500, longitudinalMeters: 500) { pois in
+            self.delegate?.searchResultsDidUpdate(pois ?? [] , searchLocation: nil)
+        }
     }
     
+    func fetchPOIS(by searchText: String, latitudinalMeters: CLLocationDistance, longitudinalMeters: CLLocationDistance, completion: @escaping ([POI]?)  -> Void) {
+        var pois: [POI]? = []
+        let request = MKLocalSearch.Request()
+        
+        request.naturalLanguageQuery = searchText
+        
+        guard let location = AppContext.shared.geolocationManager.location else {
+            completion([])
+            return
+        }
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: latitudinalMeters, longitudinalMeters: longitudinalMeters)
+        
+        request.region = region
+        let search = MKLocalSearch(request: request)
+        search.start { response, _ in
+            guard let response = response else {
+                completion([])
+                return
+            }
+            for item in response.mapItems {
+                let poi = GenericLocation(lat: (item.placemark.location?.coordinate.latitude)!, lon: (item.placemark.location?.coordinate.longitude)!, name: item.name!)
+                pois?.append(poi)
+                
+            }
+            completion(pois ?? [])
+        }
+    }
 }
