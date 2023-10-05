@@ -1,4 +1,8 @@
-# Open Source Soundscape
+# Important notice
+
+_This repository and organization is now archived and development has shifted to https://github.com/soundscape-community/soundscape_
+
+# Open Source Soundscape 
 
 This open source project is a subset of 'Microsoft Soundscape' product
 as released on the Apple App Store.  To make this contribution to open
