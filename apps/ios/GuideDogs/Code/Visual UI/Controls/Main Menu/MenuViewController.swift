@@ -71,7 +71,7 @@ class MenuViewController: UIViewController {
         menuView.addMenuItem(.settings)
         menuView.addMenuItem(.help)
         //menuView.addMenuItem(.learningResources)
-//        menuView.addMenuItem(.feedback)
+        menuView.addMenuItem(.feedback)
         menuView.addMenuItem(.rate)
         menuView.addMenuItem(.share)
         
@@ -122,7 +122,7 @@ class MenuViewController: UIViewController {
             select(.help)
             
         case .feedback:
-            let alertController = UIAlertController(email: GDLocalizationUnnecessary("yourproduct@yourdomain.com"),
+            let alertController = UIAlertController(email: Bundle.main.object(forInfoDictionaryKey: "FeedbackMail") as! String,
                                                     subject: GDLocalizedString("settings.feedback.subject"),
                                                     preferredStyle: .actionSheet) { [weak self] (mailClient) in
                 if let mailClient = mailClient {

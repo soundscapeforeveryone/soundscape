@@ -13,14 +13,17 @@ enum MailClient: String, CaseIterable {
     // TODO: Add Mail Clients that you would like to support
     // These applications must also be defined in 'Queried URL Schemes' in Info.plist
     
-    // example: case .outlook
-    case example
+    case gmail
+    case outlook
+    case defaultMail
     
     var localizedTitle: String {
         // TODO: Return a localized title string for each mail client
         
         switch self {
-        case .example: return GDLocalizedString("")
+            case .gmail: return GDLocalizationUnnecessary("Gmail")
+            case .outlook: return GDLocalizationUnnecessary("Outlook")
+            case .defaultMail: return GDLocalizationUnnecessary("Mail app")
         }
     }
     
@@ -31,7 +34,9 @@ enum MailClient: String, CaseIterable {
         // TODO: Return appropriate URL for each mail client
         
         switch self {
-        case .example: return URL(string: "URL TO OPEN EMAIL WITH SUBECT LINE")
+            case .gmail: return URL(string: "googlegmail://co?to=\(Bundle.main.object(forInfoDictionaryKey: "FeedbackMail") as! String)&subject=\(escapedSubject)")
+            case .outlook: return URL(string: "ms-outlook://compose?to=\(Bundle.main.object(forInfoDictionaryKey: "FeedbackMail") as! String)&subject=\(escapedSubject)")
+            case .defaultMail: return URL(string: "mailto:\(Bundle.main.object(forInfoDictionaryKey: "FeedbackMail") as! String)?subject=\(escapedSubject)")
         }
     }
 }
